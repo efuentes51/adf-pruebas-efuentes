@@ -1,0 +1,64 @@
+{
+	"name": "PL_COPIA_ARCHIVOS_WEB",
+	"properties": {
+		"activities": [
+			{
+				"name": "DESCARGA_SITIO_WEB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "POST",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PETICIONES_WEB",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_url": {
+								"value": "@concat('https://herramientas.uruguayxxi.gub.uy/directorio_de_exportadores/excel.php?n=&md=01&ad=2010&mh=',formatDateTime(utcNow(),'MM'),'&ah=',formatDateTime(utcNow(),'yyyy'),'&pa=Todos&cat=Todos&ncm=')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_STPRUEBASEFUENTES",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_contenedor": "bronze",
+							"p_ruta": "/PRUEBAS_EFUENTES/",
+							"p_nombre_archivo": "datos_uruguay"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
