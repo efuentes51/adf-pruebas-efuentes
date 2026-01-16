@@ -1,0 +1,9 @@
+{
+	"name": "adf-pruebas-efuentes",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9451cf87-158b-49f1-a160-7bf695b96549",
+		"tenantId": "4bf38ea2-832d-4552-b508-421570da43ff"
+	}
+}
