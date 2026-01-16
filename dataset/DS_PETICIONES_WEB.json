@@ -1,0 +1,27 @@
+{
+	"name": "DS_PETICIONES_WEB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SITIOS_WEB",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"p_url": {
+					"value": "@dataset().p_url",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"p_url": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		}
+	}
+}

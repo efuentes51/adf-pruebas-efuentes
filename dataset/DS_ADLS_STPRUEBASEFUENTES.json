@@ -1,0 +1,39 @@
+{
+	"name": "DS_ADLS_STPRUEBASEFUENTES",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_STPRUEBASEFUENTES",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_contenedor": {
+				"type": "String"
+			},
+			"p_ruta": {
+				"type": "String"
+			},
+			"p_nombre_archivo": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().p_nombre_archivo",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().p_ruta",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().p_contenedor",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
